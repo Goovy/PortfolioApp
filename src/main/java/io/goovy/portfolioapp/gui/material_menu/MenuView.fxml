@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<?import com.jfoenix.controls.JFXHamburger?>
+<?import com.jfoenix.controls.JFXRippler?>
+<?import com.jfoenix.controls.JFXToolbar?>
+<?import com.jfoenix.transitions.hamburger.HamburgerSlideCloseTransition?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<AnchorPane maxHeight="-Infinity" maxWidth="+Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            xmlns="http://javafx.com/javafx/8.0.121"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="io.goovy.portfolioapp.gui.material_menu.MenuView">
+   <children>
+      <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"
+            fx:id="menuPane">
+         <children>
+            <!-- Keep the menubar like in Electron -->
+            <MenuBar fx:id="menuBar">
+               <menus>
+                  <Menu mnemonicParsing="false" text="%menu.file">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="%menu.quit" onAction="#quit" />
+                     </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" text="%menu.help">
+                     <items>
+                        <MenuItem mnemonicParsing="false" onAction="#about" text="%menu.about" />
+                     </items>
+                  </Menu>
+               </menus>
+            </MenuBar>
+            <!-- Add the material top bar -->
+            <JFXToolbar>
+               <leftItems>
+                  <JFXRippler maskType="CIRCLE" style="-fx-ripple-color:WHITE;">
+                     <StackPane fx:id="titleBurgerContainer" onMouseClicked="#hamburgerClicked">
+                        <JFXHamburger fx:id="titleBurger">
+                           <HamburgerSlideCloseTransition/>
+                        </JFXHamburger>
+                     </StackPane>
+                  </JFXRippler>
+                  <Label text="%section.title.dashboard"></Label>
+               </leftItems>
+            </JFXToolbar>
+
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

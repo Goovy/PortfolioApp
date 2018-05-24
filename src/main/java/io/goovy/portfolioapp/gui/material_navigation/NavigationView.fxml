@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<ScrollPane fitToHeight="true" fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" BorderPane.alignment="TOP_LEFT" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.goovy.portfolioapp.gui.material_navigation.NavigationView">
+    <content>
+        <VBox maxWidth="180.0" prefWidth="180.0" styleClass="side-pane">
+            <children>
+                <JFXButton buttonType="FLAT" onAction="#showDashboard" styleClass="menu-button" text="DASHBOARD">
+               <VBox.margin>
+                  <Insets top="40.0" />
+               </VBox.margin></JFXButton>
+                <JFXButton buttonType="FLAT" onAction="#showPortfolios" styleClass="menu-button">PORTFOLIOS</JFXButton>
+                <JFXButton buttonType="FLAT" onAction="#showInstruments" styleClass="menu-button">INSTRUMENTS</JFXButton>
+            </children>
+        </VBox>
+    </content>
+</ScrollPane>

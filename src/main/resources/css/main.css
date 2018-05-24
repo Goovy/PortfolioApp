@@ -1,0 +1,38 @@
+/* Main css file */
+.side-pane {
+    -fx-background-color: #58a5f0;
+}
+
+.stat-pane {
+    -fx-background-color: #FF9800;
+    -fx-text-fill: #000000;
+    -fx-font-size: 14px;
+}
+
+.scroll-pane .menu-button {
+    -fx-pref-width: 180px;
+    -fx-pref-height: 60px;
+    -fx-font-size: 16px;
+    -fx-text-fill: #FFFFFF;
+    -fx-padding: 5px 0px 5px 0px;
+    -fx-border-insets: 5px 0px 5px 0px;
+    -fx-background-insets: 5px 0px 5px 0px;
+}
+
+.scroll-pane .menu-button:hover {
+    -fx-cursor: hand;
+    -fx-background-color: #FFC947;
+    -fx-text-fill: #000000;
+}
+/** Color Themes for inspiration
+Grey & green
+https://material.io/tools/color/#!/?view.left=0&view.right=0&primary.color=546E7A&secondary.color=009688
+light: #819ca9
+dark : #29434e
+
+Blue & orange
+https://material.io/tools/color/#!/?view.left=0&view.right=0&primary.color=0277BD&secondary.color=FF9800
+Light: #58a5f0
+Dark : #004c8c
+
+ */
