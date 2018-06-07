@@ -12,6 +12,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
+        <!--Dependency lib version-->
         <mvvmfx.version>1.7.0</mvvmfx.version>
         <guice.version>4.1.0</guice.version>
         <guava.version>25.0-jre</guava.version>
@@ -78,12 +79,6 @@
             <groupId>com.1stleg</groupId>
             <artifactId>jnativehook</artifactId>
             <version>${jnativehook.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>javax.enterprise</groupId>
-            <artifactId>cdi-api</artifactId>
-            <version>2.0</version>
         </dependency>
     </dependencies>
 
