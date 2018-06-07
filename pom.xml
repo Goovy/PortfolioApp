@@ -17,6 +17,7 @@
         <guava.version>25.0-jre</guava.version>
         <slf4j.version>1.2.3</slf4j.version>
         <jfoenix.version>8.0.4</jfoenix.version>
+        <jnativehook.version>2.1.0</jnativehook.version>
     </properties>
 
     <!-- use resource files (fxml, css) from the java directory -->
@@ -76,8 +77,9 @@
         <dependency>
             <groupId>com.1stleg</groupId>
             <artifactId>jnativehook</artifactId>
-            <version>RELEASE</version>
+            <version>${jnativehook.version}</version>
         </dependency>
+
         <dependency>
             <groupId>javax.enterprise</groupId>
             <artifactId>cdi-api</artifactId>
