@@ -1,0 +1,59 @@
+/************************************************/
+/*                                              */
+/* Definition of the Dark theme  palette        */
+/*                                              */
+/* Created by goovy.io team @ 2018              */
+/*                                              */
+/************************************************/
+
+@import url("material-ui.css");
+
+/** Palette defintion **/
+.root {
+    primary-color-dark: #000000;
+    primary-color: #212121;
+    primary-color-light: #303030;
+    primary-color-lighter: #424242;
+
+    primary-text-color: #FFFFFF;
+    primary-text-color-80: rgba(255,255,255,0.8);
+    primary-text-color-60: rgba(255,255,255,0.6);
+
+    secondary-color: #FFC947;
+
+    secondary-text-color: rgba(0,0,0,1);
+    secondary-text-color-80: rgba(10,10,10,1);
+    secondary-text-color-60: rgba(20,20,20,0.8);
+
+    -fx-background-color: primary-color-light;
+}
+
+/************************************************
+ * Custom selectors
+ */
+/* Tricky: to setup a background color to a scroll-pane
+https://stackoverflow.com/questions/22952531/scrollpanes-in-javafx-8-always-have-gray-background
+*/
+.scroll-pane > .viewport {
+    -fx-background-color: transparent;
+}
+
+.scroll-pane .dashboard {
+    -fx-background-color: primary-color-lighter;
+}
+
+/* Side pane menu*/
+.side-pane {
+    -fx-background-image: url("/images/nav-bg.jpg");
+    -fx-background-repeat: stretch;
+    -fx-background-color: primary-color;
+}
+
+.stat-pane {
+    -fx-background-color: #FF9800;
+    -fx-text-fill: #000000;
+    -fx-font-size: 14px;
+}
+
+
+/************************************************/

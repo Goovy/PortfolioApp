@@ -5,7 +5,11 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
-<ScrollPane fitToHeight="true" fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" BorderPane.alignment="TOP_LEFT" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.goovy.portfolioapp.gui.material_navigation.NavigationView">
+<ScrollPane fitToHeight="true" fitToWidth="true"
+            maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+            BorderPane.alignment="TOP_LEFT"
+            xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="io.goovy.portfolioapp.gui.material_navigation.NavigationView">
     <content>
         <VBox maxWidth="180.0" prefWidth="180.0" styleClass="side-pane">
             <children>

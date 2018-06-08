@@ -86,8 +86,7 @@ public class App extends MvvmfxGuiceApplication {
         Scene rootScene = new Scene(jfxDecorator);
 
         // Ajout d'une feuille de style
-        rootScene.getStylesheets().add("/css/material-ui.css");
-        rootScene.getStylesheets().add("/css/main.css");
+        rootScene.getStylesheets().add("/css/dark-theme.css");
 
         stage.setScene(rootScene);
         stage.show();
