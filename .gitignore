@@ -21,3 +21,5 @@ hs_err_pid*
 
 ## Directory-based project format:
 .idea/
+/.classpath
+/.project
