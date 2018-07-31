@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.dgc.finance</groupId>
@@ -18,6 +17,34 @@
         <slf4j.version>1.2.3</slf4j.version>
         <jfoenix.version>8.0.4</jfoenix.version>
         <jnativehook.version>2.1.0</jnativehook.version>
+
+        <!-- properties for FXLauncher -->
+        <!-- Application Name -->
+        <app.filename>${project.name}</app.filename>
+
+        <!-- The JavaFX Application class name -->
+        <app.mainClass>io.goovy.portfolioapp.App</app.mainClass>
+
+        <!-- The app and launcher will be assembled in this folder -->
+        <app.dir>${project.build.directory}/app</app.dir>
+
+        <!-- Optional override to specify where the cached files are stored. Default is current working directory -->
+        <app.cacheDir>USERLIB/${project.name}</app.cacheDir>
+
+        <!-- Native installers will be build in this folder -->
+        <app.installerdir>${project.build.directory}/installer</app.installerdir>
+
+        <!-- Base URL where you will host the application artifacts -->
+        <app.url>file:///C:/Temp/app</app.url>
+
+        <!-- Optional scp target for application artifacts hosted at the above url -->
+        <app.deploy.target>C:/Temp</app.deploy.target>
+
+        <!-- Should the client downgrade if the server version is older than the local version? -->
+        <app.acceptDowngrade>false</app.acceptDowngrade>
+
+        <app.vendor>goovy.io</app.vendor>
+        <app.version>${project.version}</app.version>
     </properties>
 
     <!-- use resource files (fxml, css) from the java directory -->
@@ -30,9 +57,162 @@
                 <directory>src/main/resources</directory>
             </resource>
         </resources>
+
+        <plugins>
+            <!-- Compile project jar to appdir -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>2.6</version>
+                <configuration>
+                    <outputDirectory>${app.dir}</outputDirectory>
+                </configuration>
+            </plugin>
+            <!-- Copy dependencies to appdir -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>2.10</version>
+                <configuration>
+                    <excludeScope>provided</excludeScope>
+                    <outputDirectory>${app.dir}</outputDirectory>
+                    <stripVersion>true</stripVersion>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy-dependencies</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <!-- Create Manifest file for FXLauncher -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>1.4.0</version>
+                <!-- Generate app.xml manifest -->
+                <executions>
+                    <execution>
+                        <id>create-manifest</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>java</goal>
+                        </goals>
+                        <configuration>
+                            <mainClass>fxlauncher.CreateManifest</mainClass>
+                            <arguments>
+                                <argument>${app.url}</argument>
+                                <argument>${app.mainClass}</argument>
+                                <argument>${app.dir}</argument>
+                                <argument>--cache-dir=${app.cacheDir}</argument>
+                                <argument>--accept-downgrade=${app.acceptDowngrade}</argument>
+                                <argument>--include-extensions=jpg</argument>
+                            </arguments>
+                        </configuration>
+                    </execution>
+                    <!-- Embed app.xml inside fxlauncher.xml so we don't need to reference app.xml to start the app -->
+                    <execution>
+                        <id>embed-manifest-in-launcher</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                        <configuration>
+                            <executable>jar</executable>
+                            <workingDirectory>${app.dir}</workingDirectory>
+                            <arguments>
+                                <argument>uf</argument>
+                                <argument>fxlauncher.jar</argument>
+                                <argument>app.xml</argument>
+                            </arguments>
+                        </configuration>
+                    </execution>
+                    <!-- Copy application artifacts to remote site using cp (optional) -->
+                    <execution>
+                        <id>deploy-app</id>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                        <configuration>
+                            <executable>cp</executable>
+                            <arguments>
+                                <argument>-r</argument>
+                                <argument>target/app</argument>
+                                <argument>${app.deploy.target}</argument>
+                            </arguments>
+                        </configuration>
+                    </execution>
+                    <!-- Optional step to include custom UI, see https://github.com/edvin/fxlauncher-custom-ui -->
+                    <!--<execution>-->
+                    <!--<id>embed-custom-ui-in-launcher</id>-->
+                    <!--<phase>package</phase>-->
+                    <!--<goals>-->
+                    <!--<goal>exec</goal>-->
+                    <!--</goals>-->
+                    <!--<configuration>-->
+                    <!--<executable>jar</executable>-->
+                    <!--<workingDirectory>${app.dir}</workingDirectory>-->
+                    <!--<arguments>-->
+                    <!--<argument>uf</argument>-->
+                    <!--<argument>fxlauncher.jar</argument>-->
+                    <!--<argument>-C</argument>-->
+                    <!--<argument>${project.basedir}/../fxlauncher-custom-ui/target/classes</argument>-->
+                    <!--<argument>.</argument>-->
+                    <!--</arguments>-->
+                    <!--</configuration>-->
+                    <!--</execution>-->
+
+                    <!-- Create native installer. Feel free to add more arguments as needed.
+                     https://docs.oracle.com/javase/8/docs/technotes/tools/windows/javapackager.html
+                     -->
+                    <execution>
+                        <id>installer</id>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                        <configuration>
+                            <executable>javapackager</executable>
+
+                            <arguments>
+                                <argument>-deploy</argument>
+                                <argument>-native</argument>
+                                <argument>-outdir</argument>
+                                <argument>${app.installerdir}</argument>
+                                <argument>-outfile</argument>
+                                <argument>${app.filename}</argument>
+                                <argument>-srcdir</argument>
+                                <argument>${app.dir}</argument>
+                                <argument>-srcfiles</argument>
+                                <argument>fxlauncher.jar</argument>
+                                <argument>-appclass</argument>
+                                <argument>fxlauncher.Launcher</argument>
+                                <argument>-name</argument>
+                                <argument>${project.name}</argument>
+                                <argument>-title</argument>
+                                <argument>${project.name}</argument>
+                                <argument>-vendor</argument>
+                                <argument>${app.vendor}</argument>
+                                <argument>-BappVersion=${app.version}</argument>
+                                <argument>-Bidentifier=${project.groupId}.${project.artifactId}</argument>
+                            </arguments>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
     </build>
 
     <dependencies>
+        <!-- FXLauncher -->
+        <dependency>
+            <groupId>no.tornado</groupId>
+            <artifactId>fxlauncher</artifactId>
+            <version>1.0.20</version>
+        </dependency>
+
         <!-- MVVM framework with CDI implementation -->
         <dependency>
             <groupId>de.saxsys</groupId>
