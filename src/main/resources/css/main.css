@@ -1,4 +1,9 @@
 /* Main css file */
+.glyph-icon{
+    -fx-font-family:"FontAwesome";
+    -fx-fill: #FFFFFF;
+}
+
 .side-pane {
     -fx-background-color: #58a5f0;
 }
