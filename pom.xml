@@ -244,6 +244,13 @@
             <artifactId>logback-classic</artifactId>
             <version>${slf4j.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.16.16</version>
+            <scope>provided</scope>
+        </dependency>
         <!-- Fancy GUI libs -->
         <dependency>
             <groupId>com.jfoenix</groupId>

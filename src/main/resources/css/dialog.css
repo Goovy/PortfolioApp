@@ -1,0 +1,9 @@
+.root {
+    -fx-border-width: 2px;
+    -fx-border-style: solid;
+    -fx-border-color: #86919a;
+}
+
+.about-title {
+    -fx-text-fill: #ffaf0d;
+}

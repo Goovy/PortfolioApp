@@ -1,13 +1,19 @@
 package io.goovy.portfolioapp.gui.material_menu;
 
+import de.saxsys.mvvmfx.FluentViewLoader;
 import de.saxsys.mvvmfx.FxmlView;
 import de.saxsys.mvvmfx.InjectViewModel;
+import de.saxsys.mvvmfx.ViewTuple;
+import io.goovy.portfolioapp.gui.about.AboutView;
+import io.goovy.portfolioapp.gui.about.AboutViewModel;
+import io.goovy.portfolioapp.util.DialogHelper;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.MenuBar;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import javax.inject.Inject;
 
@@ -53,11 +59,10 @@ public class MenuView implements FxmlView<MenuViewModel> {
     }
 
     public void about(ActionEvent actionEvent) {
-        Alert aboutDialog = new Alert(Alert.AlertType.INFORMATION);
-        aboutDialog.setHeaderText(null);
-        aboutDialog.setTitle("About");
-        aboutDialog.setContentText("Sample of JavaFX App by goovy.io.\nversion 1.0.0");
-        aboutDialog.showAndWait();
+        ViewTuple<AboutView, AboutViewModel> aboutView = FluentViewLoader.fxmlView(AboutView.class).load();
+        aboutView.getView().getStylesheets().add("/css/dialog.css");
+        Stage dialogStage = DialogHelper.showDialog(aboutView.getView(), primaryStage, StageStyle.TRANSPARENT);
+        aboutView.getCodeBehind().setStage(dialogStage);
     }
 
     public void hamburgerClicked(MouseEvent mouseEvent) {

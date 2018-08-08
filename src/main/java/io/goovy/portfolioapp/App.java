@@ -13,6 +13,7 @@ import io.goovy.portfolioapp.service.KeyListener;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import lombok.extern.slf4j.Slf4j;
 import org.jnativehook.GlobalScreen;
 import org.jnativehook.NativeHookException;
 import org.slf4j.Logger;
@@ -24,9 +25,8 @@ import java.util.logging.Level;
 /**
  * Entry point of the application
  */
+@Slf4j
 public class App extends MvvmfxGuiceApplication {
-    private static final Logger LOG = LoggerFactory.getLogger(App.class);
-
     // EventBus using Guava
     private static EventBus eventBus = new EventBus("Key_Pressed_event_bus");
 
@@ -50,8 +50,8 @@ public class App extends MvvmfxGuiceApplication {
             GlobalScreen.registerNativeHook();
         }
         catch (NativeHookException ex) {
-            LOG.error("The key listener could not be initialized.");
-            LOG.error(ex.getMessage());
+            log.error("The key listener could not be initialized.");
+            log.error(ex.getMessage());
 
             System.exit(1);
         }
@@ -66,7 +66,7 @@ public class App extends MvvmfxGuiceApplication {
 
     @Override
     public void startMvvmfx(Stage stage) throws Exception {
-        LOG.debug("L'application démarre!");
+        log.debug("L'application démarre!");
 
         // Ajout du paquet de resources par defaut pour l'i18n
         ResourceBundle resourceBundle = ResourceBundle.getBundle("default");
