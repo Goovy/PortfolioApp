@@ -21,4 +21,8 @@ public class ContentView implements FxmlView<ContentViewModel> {
         final ViewTuple dashboard = FluentViewLoader.fxmlView(DashboardView.class).load();
         tabPane.getTabs().add(new Tab("Dashboard", dashboard.getView()));
     }
+
+    public void addTab() {
+        tabPane.getTabs().add(null);
+    }
 }

@@ -14,11 +14,14 @@ public class NavigationView implements FxmlView<NavigationViewModel> {
     }
 
     public void showDashboard(ActionEvent actionEvent) {
+        viewModel.addMainContent(NavigationViewModel.DASHBOARD);
     }
 
     public void showPortfolios(ActionEvent actionEvent) {
+        viewModel.addMainContent(NavigationViewModel.PORTFOLIOS);
     }
 
     public void showInstruments(ActionEvent actionEvent) {
+        viewModel.addMainContent(NavigationViewModel.INSTRUMENTS);
     }
 }

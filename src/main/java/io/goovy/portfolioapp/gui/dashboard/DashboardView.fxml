@@ -2,19 +2,35 @@
 
 <?import com.jfoenix.controls.JFXMasonryPane?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.StackPane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.goovy.portfolioapp.gui.dashboard.DashboardView">
+<?import javafx.scene.layout.VBox?>
+<AnchorPane xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.goovy.portfolioapp.gui.dashboard.DashboardView">
     <ScrollPane fx:id="scrollPane" fitToWidth="true" hbarPolicy="NEVER" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0">
         <JFXMasonryPane fx:id="masonryPane" HSpacing="20" VSpacing="20">
             <StackPane fx:id="stat01Pane" prefHeight="220" prefWidth="220" styleClass="stat-pane">
-                <Label text="0 portefeuille actif" />
+                <VBox>
+                    <children>
+                        <Button fx:id="refresh1" onAction="#refresh01" text="Refresh 01" />
+                        <Button fx:id="refresh2" onAction="#refresh02" text="Refresh 02" />
+                        <Label fx:id="nbActivePortfolioText" text="0 portefeuille actif">
+                            <VBox.margin>
+                                <Insets top="10.0" />
+                            </VBox.margin>
+                        </Label>
+                    </children>
+                    <padding>
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                    </padding>
+                </VBox>
+
             </StackPane>
          <padding>
-            <Insets bottom="20.0" right="20.0" top="20.0" left="20.0" />
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
          </padding>
         </JFXMasonryPane>
     </ScrollPane>
