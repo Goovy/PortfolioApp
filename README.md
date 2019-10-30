@@ -1,9 +1,9 @@
-# Tutoriel JavaFX - partie 1
+# Tutoriel JavaFX - partie 2
 
-Ce tutoriel est disponible sur le site [développez.com](https://gerald-colin.developpez.com/tutoriels/javafx/developpement-client-environnement/).
+Ce tutoriel est disponible sur le site [développez.com](https://gerald-colin.developpez.com/).
 
-Il s'agit d'une réécriture du [tutoriel de notre blog](https://blog.goovy.io/developpement-de-client-lourd-java-mais-moins-lourd-que-les-clients-legers/).
+Il s'agit d'une réécriture du [tutoriel de notre blog](https://blog.goovy.io/developpement-de-client-en-javafx-partie-2/).
 
-Cette première partie couvre la mise en place du projet avec ses dépendances et le démarrage d'une première fenetre.
+Cette deuxième partie couvre la communication entre composants.
 
 
