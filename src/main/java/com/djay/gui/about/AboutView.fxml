@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.djay.gui.about.AboutView"
+            prefHeight="200.0" prefWidth="450.0">
+
+    <Label layoutX="20" layoutY="40" fx:id="version" />
+    <Label layoutX="20" layoutY="65" fx:id="build" />
+    <Button layoutX="200" layoutY="160" onAction="#close" text="Fermer" />
+
+</AnchorPane>

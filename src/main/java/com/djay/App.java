@@ -13,6 +13,10 @@ import javafx.scene.image.Image;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ResourceBundle;
 
 /**
@@ -22,6 +26,9 @@ import java.util.ResourceBundle;
 public class App extends MvvmfxGuiceApplication {
 
     private static final Logger LOG = LoggerFactory.getLogger(App.class);
+
+    public static String APP_VERSION = GetAppVersion();
+    public static String APP_BUILD = GetAppBuild();
 
     public static void main( String[] args )
     {
@@ -65,5 +72,41 @@ public class App extends MvvmfxGuiceApplication {
     @Override
     public void stopMvvmfx() throws Exception {
 
+    }
+
+    /**
+     * Lit le numéro de version de l'application
+     *
+     * @return le numéro de version
+     */
+    private static String GetAppVersion() {
+        return getDataFromVersionFileAtLine(1).split("=")[1];
+    }
+
+    private static String GetAppBuild() {
+        return getDataFromVersionFileAtLine(2).split("=")[1];
+    }
+
+    /**
+     * Extrait les données de version de l'application depuis le fichier version.txt
+     * @param nbLine numéro de ligne dans le fichier
+     * @return la donnée du fichier
+     */
+    private static String getDataFromVersionFileAtLine(int nbLine) {
+        InputStream in = App.class.getClassLoader().getResourceAsStream("version.txt");
+        BufferedReader br = new BufferedReader(new InputStreamReader(in));
+        String line;
+        try {
+            int i=1;
+            while (((line = br.readLine()) != null) && (i<nbLine)) {
+                i++;
+            }
+            if (i==nbLine) {
+                return line;
+            }
+        } catch (IOException e) {
+            LOG.error("La lecture des données dans le fichier version.txt a échoué.");
+        }
+        return "-=-";
     }
 }

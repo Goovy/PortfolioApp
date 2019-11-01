@@ -1,0 +1,7 @@
+.root {
+    -fx-background-color: #aaa;
+    -fx-border-style: solid;
+    -fx-border-width: 2px;
+    -fx-border-color: #333333;
+    -fx-background-color: #d3d7df;
+}
