@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXMasonryPane?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.*?>
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.djay.gui.dashboard.DashboardView"
+            prefHeight="400.0" prefWidth="600.0">
+
+    <ScrollPane fx:id="scrollPane" fitToWidth="true" hbarPolicy="NEVER" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0">
+        <JFXMasonryPane fx:id="masonryPane" HSpacing="20" VSpacing="20">
+            <StackPane fx:id="statsPositionsPane" prefHeight="220" prefWidth="220" styleClass="stat-pane">
+                <VBox>
+                    <children>
+                        <Button fx:id="refresh1" onAction="#refreshPostions" text="MàJ Positions">
+                            <VBox.margin>
+                                <Insets top="10.0" />
+                            </VBox.margin>
+                        </Button>
+                        <Label fx:id="nbActivePositionText" text="0 position active">
+                            <VBox.margin>
+                                <Insets top="50.0" />
+                            </VBox.margin>
+                        </Label>
+                    </children>
+                    <padding>
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                    </padding>
+                </VBox>
+
+            </StackPane>
+            <StackPane fx:id="statsInstrumentsPane" prefHeight="220" prefWidth="220" styleClass="stat-pane">
+                <VBox>
+                    <children>
+                        <Button fx:id="refresh2" onAction="#refreshInstruments" text="MàJ Instruments">
+                            <VBox.margin>
+                                <Insets top="10.0" />
+                            </VBox.margin>
+                        </Button>
+                        <Label fx:id="nbActiveInstrumentText" text="0 instrument utilisé">
+                            <VBox.margin>
+                                <Insets top="50.0" />
+                            </VBox.margin>
+                        </Label>
+                    </children>
+                    <padding>
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                    </padding>
+                </VBox>
+
+            </StackPane>
+            <padding>
+                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+            </padding>
+        </JFXMasonryPane>
+    </ScrollPane>
+
+</AnchorPane>

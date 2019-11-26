@@ -5,6 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
+<?import com.jfoenix.controls.JFXTabPane?>
 <BorderPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.djay.gui.MainView">
 <!-- Barre de menu -->
 <top>
@@ -16,28 +17,8 @@
 </left>
 <!-- Contenu principale -->
 <center>
-    <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
-        <tabs>
-            <Tab text="Untitled Tab 1">
-                <content>
-                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                        <children>
-
-                        </children>
-                    </AnchorPane>
-                </content>
-            </Tab>
-            <Tab text="Untitled Tab 2">
-                <content>
-                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                        <children>
-
-                        </children>
-                    </AnchorPane>
-                </content>
-            </Tab>
-        </tabs>
-    </TabPane>
+    <JFXTabPane fx:id="tabPane" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0">
+    </JFXTabPane>
 </center>
 <!-- Barre de notification -->
 <bottom>

@@ -1,1 +1,4 @@
 /* Main css file */
+.stat-pane {
+    -fx-background-color: rgba(80, 142, 245, 0.7);
+}
