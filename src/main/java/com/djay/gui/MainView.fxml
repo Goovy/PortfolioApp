@@ -6,19 +6,20 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 <?import com.jfoenix.controls.JFXTabPane?>
+<?import com.jfoenix.controls.JFXDrawer?>
 <BorderPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.djay.gui.MainView">
 <!-- Barre de menu -->
 <top>
     <fx:include source="menu/MenuView.fxml" />
 </top>
-<!-- Sous-menu de navigation -->
-<left>
-    <fx:include source="navigation/NavigationView.fxml" />
-</left>
+<!-- Sous-menu de navigation : dans le contenu principale depuis l'usage du drawer -->
+<!--<left>-->
+<!--    <fx:include source="navigation/NavigationView.fxml" />-->
+<!--</left>-->
 <!-- Contenu principale -->
 <center>
-    <JFXTabPane fx:id="tabPane" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0">
-    </JFXTabPane>
+    <JFXDrawer fx:id="drawer" defaultDrawerSize="180" direction="LEFT" styleClass="body">
+    </JFXDrawer>
 </center>
 <!-- Barre de notification -->
 <bottom>

@@ -2,26 +2,46 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXToolbar?>
+<?import com.jfoenix.controls.JFXRippler?>
+<?import com.jfoenix.controls.JFXHamburger?>
+<?import com.jfoenix.transitions.hamburger.HamburgerSlideCloseTransition?>
 <AnchorPane maxHeight="-Infinity" maxWidth="+Infinity" minHeight="-Infinity" minWidth="-Infinity"
             xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.djay.gui.menu.MenuView">
-
-<children>
-    <MenuBar AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
-             AnchorPane.topAnchor="0.0">
-        <menus>
-            <Menu mnemonicParsing="false" text="%menu.file">
-                <items>
-                    <MenuItem mnemonicParsing="false" text="%menu.quit" onAction="#quit" />
-                </items>
-            </Menu>
-            <Menu mnemonicParsing="false" text="%menu.help">
-                <items>
-                    <MenuItem mnemonicParsing="false" onAction="#about" text="%menu.about" />
-                </items>
-            </Menu>
-        </menus>
-    </MenuBar>
-</children>
+    <children>
+        <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"
+              fx:id="menuPane">
+            <children>
+                <MenuBar AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                         AnchorPane.topAnchor="0.0">
+                    <menus>
+                        <Menu mnemonicParsing="false" text="%menu.file">
+                            <items>
+                                <MenuItem mnemonicParsing="false" text="%menu.quit" onAction="#quit" />
+                            </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="%menu.help">
+                            <items>
+                                <MenuItem mnemonicParsing="false" onAction="#about" text="%menu.about" />
+                            </items>
+                        </Menu>
+                    </menus>
+                </MenuBar>
+                <JFXToolbar>
+                    <leftItems>
+                        <JFXRippler maskType="CIRCLE" style="-fx-ripple-color:WHITE;">
+                            <StackPane fx:id="titleBurgerContainer" onMouseClicked="#hamburgerClicked">
+                                <JFXHamburger fx:id="titleBurger">
+                                    <HamburgerSlideCloseTransition/>
+                                </JFXHamburger>
+                            </StackPane>
+                        </JFXRippler>
+                        <Label text=""></Label>
+                    </leftItems>
+                </JFXToolbar>
+            </children>
+        </VBox>
+    </children>
 </AnchorPane>

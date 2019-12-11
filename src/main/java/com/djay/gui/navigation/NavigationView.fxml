@@ -1,9 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.AnchorPane?>
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.djay.gui.navigation.NavigationView"
-            prefHeight="400.0" prefWidth="150.0">
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.*?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 
-</AnchorPane>
+<ScrollPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fitToHeight="true" fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+            BorderPane.alignment="TOP_LEFT"
+            fx:controller="com.djay.gui.navigation.NavigationView">
+<content>
+    <VBox maxWidth="190.0" prefWidth="190.0" styleClass="side-pane">
+        <children>
+            <StackPane>
+                <VBox.margin>
+                    <Insets top="40.0" />
+                </VBox.margin>
+                <JFXButton buttonType="FLAT" onAction="#showDashboard" styleClass="menu-button" text="DASHBOARD" StackPane.alignment="CENTER_LEFT">
+                    <StackPane.margin>
+                        <Insets top="40.0" />
+                    </StackPane.margin>
+                    <padding>
+                        <Insets left="60.0" />
+                    </padding>
+                </JFXButton>
+<!--                <FontAwesomeIconView glyphName="DASHBOARD" glyphSize="18" StackPane.alignment="CENTER_LEFT">-->
+<!--                    <StackPane.margin>-->
+<!--                        <Insets left="15.0" top="40.0" />-->
+<!--                    </StackPane.margin>-->
+<!--                </FontAwesomeIconView>-->
+            </StackPane>
+            <StackPane>
+                <JFXButton buttonType="FLAT" onAction="#showPortfolios" styleClass="menu-button" text="PORTFOLIOS" StackPane.alignment="CENTER_LEFT">
+                    <padding>
+                        <Insets left="60.0" />
+                    </padding></JFXButton>
+<!--                <FontAwesomeIconView glyphName="CALCULATOR" size="18" StackPane.alignment="CENTER_LEFT">-->
+<!--                    <StackPane.margin>-->
+<!--                        <Insets left="15.0" />-->
+<!--                    </StackPane.margin></FontAwesomeIconView>-->
+            </StackPane>
+            <StackPane>
+                <JFXButton buttonType="FLAT" onAction="#showInstruments" styleClass="menu-button" text="INSTRUMENTS" StackPane.alignment="CENTER_LEFT">
+                    <padding>
+                        <Insets left="60.0" />
+                    </padding>
+                </JFXButton>
+<!--                <FontAwesomeIconView glyphName="EDIT" size="18" StackPane.alignment="CENTER_LEFT">-->
+<!--                    <StackPane.margin>-->
+<!--                        <Insets left="15.0" />-->
+<!--                    </StackPane.margin></FontAwesomeIconView>-->
+            </StackPane>
+        </children>
+    </VBox>
+</content>
+</ScrollPane>

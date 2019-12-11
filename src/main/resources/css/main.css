@@ -2,3 +2,58 @@
 .stat-pane {
     -fx-background-color: rgba(80, 142, 245, 0.7);
 }
+
+.side-pane {
+    -fx-background-color: #0277bd;
+}
+
+.scroll-pane .menu-button {
+    -fx-pref-width: 180px;
+    -fx-pref-height: 60px;
+    -fx-font-size: 14px;
+    -fx-text-fill: #FFFFFF;
+    -fx-padding: 5px 0px 5px 0px;
+    -fx-border-insets: 5px 0px 5px 0px;
+    -fx-background-insets: 5px 0px 5px 0px;
+}
+
+.scroll-pane .menu-button:hover {
+    -fx-cursor: hand;
+    -fx-background-color: #FFC947;
+    -fx-text-fill: #000000;
+}
+
+/** Style du Hamburger */
+.jfx-tool-bar {
+    -fx-font-size: 20.0;
+    /*-fx-font-weight: BOLD;*/
+    -fx-background-color: #0277bd;
+    -fx-pref-width: 100.0%;
+    -fx-pref-height: 64.0px;
+}
+
+.jfx-tool-bar .jfx-options-burger {
+    -fx-padding: 22px;
+}
+
+.jfx-tool-bar .jfx-options-burger StackPane {
+    -fx-pref-width: 4px;
+}
+
+.jfx-tool-bar .jfx-rippler {
+    -jfx-rippler-fill: WHITE;
+    -jfx-rippler-radius: 80px;
+}
+
+.jfx-tool-bar .jfx-hamburger {
+    -fx-padding: 10;
+    -fx-spacing: 5;
+    -fx-cursor: hand;
+}
+
+.jfx-tool-bar .jfx-hamburger StackPane {
+    -fx-pref-width: 25px;
+    -fx-pref-height: 3px;
+    -fx-background-color: #081134;
+    -fx-background-radius: 3px;
+}

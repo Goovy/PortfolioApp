@@ -8,6 +8,7 @@ import de.saxsys.mvvmfx.FxmlView;
 import de.saxsys.mvvmfx.InjectViewModel;
 import de.saxsys.mvvmfx.ViewTuple;
 import javafx.event.ActionEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -31,5 +32,9 @@ public class MenuView implements FxmlView<MenuViewModel> {
         aboutView.getView().getStylesheets().add("/css/dialog.css");
         Stage dialogStage = DialogHelper.showDialog(aboutView.getView(), primaryStage, StageStyle.TRANSPARENT);
         aboutView.getCodeBehind().setStage(dialogStage);
+    }
+
+    public void hamburgerClicked(MouseEvent mouseEvent) {
+        menuViewModel.notifyShowHideSidePane();
     }
 }
