@@ -21,11 +21,11 @@ public class MainView implements FxmlView<MainViewModel> {
         final ViewTuple navigationView = FluentViewLoader.fxmlView(NavigationView.class).load();
         drawer.setSidePane(navigationView.getView());
         drawer.setOverLayVisible(true);
-        // traitement des messages du controller
-        viewModel.subscribe(MainViewModel.SIDE_PANE, (k,v) -> openCloseSidePane());
         // Affichage du conteneur qui contient le contenu ou aussi appelé contenant
         final ViewTuple contentView = FluentViewLoader.fxmlView(ContentView.class).load();
         drawer.setContent(contentView.getView());
+        // traitement des messages du controller
+        viewModel.subscribe(MainViewModel.SIDE_PANE, (k,v) -> openCloseSidePane());
     }
 
     private void openCloseSidePane() {
